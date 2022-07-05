@@ -358,7 +358,7 @@ ${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${[
 
 
 /// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
-bot.command("g", (ctx) => {
+bot.command("oyun", (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
         var comments = doc.match(/-100\d+/g)
         let top = []
@@ -427,8 +427,8 @@ bot.start(async (ctx) => {
     await ctx.replyWithMarkdown(ozelMesaj(ctx.update.message.chat.id < 0),{
         reply_markup:{
             inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Rəsmi Kanalımız 📣', url:`t.me/CGuesMasterResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
+                [{text:'ASO Rəsmi 🇦🇿', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -440,8 +440,8 @@ bot.action('start', ctx=>{
         `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Rəsmi Kanalımız 📣', url:`t.me/CGuesMasterResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
+                [{text:'ASO Rəsmi 🇦🇿', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -468,8 +468,8 @@ bot.action('AZ', ctx=>{
     ctx.replyWithMarkdown(`*🎈 Qruplar*`,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup 🐊 ', url:'t.me/VendettaChatAz'}],
-                [{text:'2) Blog ⚡ ', url:'t.me/VusalinBlogu'}],
+                [{text:'1) Qrup 🐊 ', url:'t.me/WerabliAnlar'}],
+                [{text:'2) Kanal ⚡ ', url:'t.me/WerabliAnlarr'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -484,8 +484,8 @@ bot.action('TR', ctx=>{
        `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup 🐊', url:'t.me/VendettaChatAz'}],
-                [{text:'2) Blog ⚡', url:'t.me/VusalinBlogu'}],
+                [{text:'1) Qrup 🐊', url:'t.me/WerabliAnlar'}],
+                [{text:'2) Kanal ⚡', url:'t.me/WerabliAnlarr'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
