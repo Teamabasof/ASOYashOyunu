@@ -75,7 +75,7 @@ const OyunYaratHusnuEhedov = chatId => {
 }
 
 const ozelMesaj = isGroup => Degisken(`
-    *Salam,👋 Mən təxmin oyun botuyam zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et🙂*
+    *Salam,👋 Mən texmin oyun botuyam zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et🙂*
     ${isGroup ? "" : "\n*Əsas əmrlərin siyahısı üçün /help*"}
 `)
 
