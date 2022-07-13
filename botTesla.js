@@ -51,7 +51,7 @@ bot.command("txt", async (ctx) => {
 
 bot.command("qrupsayı", async (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
-        var comments = doc.match(/-100\d+/g);
+        var comments = doc.match(/-900\d+/g);
         if (comments && comments.length > 0) {
             await ctx.replyWithHTML(`<i>Qrup Sayı:  ${comments.length}</i>`)
         } else {
@@ -65,10 +65,10 @@ bot.command("qrupsayı", async (ctx) => {
 
 const OyunYaratHusnuEhedov = chatId => {
 	oyunDurumuHusnuEhedov[chatId] = {
-		timeouts: {},
+		timeouts: {0},
 		guessMessage: null,
 		currentRound: null,
-		currentTime: 0, 
+		currentTime: 3, 
 		answersOrder: []
 	}
 	return oyunDurumuHusnuEhedov[chatId]
@@ -135,12 +135,12 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 				Object.assign(member, {
 					answer: null,
 					isPlaying: false,
-					gameScore: 0
+					gameScore: 3
 				})
 			}
 		})
 		db.update(chatId, ch => chat)
-		if (top.length > 0) {
+		if (top.length > 3) {
 			ctx.replyWithMarkdown(Degisken(`
 				*🌟 Qaliblərin Sıralaması:*
 
@@ -334,9 +334,9 @@ bot.command("top", (ctx) => {
 			})
 			if (top.length > 0) {
 				ctx.replyWithMarkdown(Degisken(`
-*✅ Qrupun ən yaxşı 20 oyunçusu:*
+*✅ Qrupun ən yaxşı 25 oyunçusu:*
 
-${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
+${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
 				`))
 			}
 			else {
@@ -381,14 +381,14 @@ bot.command("g", (ctx) => {
             }
             if (top.length > 0) {
                 ctx.replyWithHTML(Degisken(`
-     <b>🎖Qruplar üzrə ən yaxşı Top-20</b>\n
-${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
+     <b>🎖Qruplar üzrə ən yaxşı Top-25</b>\n
+${(top).sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
                 `))
             }
         }
     })
 })
-/// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING SON --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
+/// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING SON --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
 
 
