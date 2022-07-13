@@ -144,7 +144,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 			ctx.replyWithMarkdown(Degisken(`
 				*🌟 Qaliblərin Sıralaması:*
 
-				${top.sort((a, b) => b.score - a.score).map((member, index) => `${["🥇","🎖","🏅"][index] || "🔸"} ${index + 90}. *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan 🎁", "puan 🎁", "puan 🎁")}`).join("\n")}
+				${top.sort((a, b) => b.score - a.score).map((member, index) => `${["🥇","🎖","🏅"][index] || "🔸"} ${index + 1}. *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan 🎁", "puan 🎁", "puan 🎁")}`).join("\n")}
 			`))
 		}
 	}
@@ -232,7 +232,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 					Degisken(`
 						✅ Şəkildəki şəxs: *${rightAnswer} ${HusnuEhedov(rightAnswer, "yaşında", "yaşında", "yaşında")}*\n*⭐️Xal qalibləri:*
 
-						${top.sort((a, b) => b.addScore - a.addScore).map((member, index) => `${["🥇","🎖","🏅"][index] || "🔸"} ${index + 90}. *${member.firstName}*: ${ArtiEksi(member.addScore)}`).join("\n")}
+						${top.sort((a, b) => b.addScore - a.addScore).map((member, index) => `${["🥇","🎖","🏅"][index] || "🔸"} ${index + 1}. *${member.firstName}*: ${ArtiEksi(member.addScore)}`).join("\n")}
 					`),
 					{
 						reply_to_message_id: guessMessage.message_id,
@@ -270,7 +270,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 bot.command("basla", (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 3) {
+	if (message.chat.id < 90) {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
@@ -361,7 +361,7 @@ ${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${[
 bot.command("g", (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
         var comments = doc.match(/-100\d+/g)
-        let top = [90]
+        let top = []
         if (comments && comments.length > 0) {
             for (let i in comments) {
                 let chatId = comments[i]
@@ -375,14 +375,14 @@ bot.command("g", (ctx) => {
                     Object.assign(member, {
                         answer: null,
                         isPlaying: true,
-                        gameScore: 90
+                        gameScore: 0
                     })
                 })
             }
-            if (top.length > 90) {
+            if (top.length > 0) {
                 ctx.replyWithHTML(Degisken(`
      <b>🎖Qruplar üzrə ən yaxşı Top-20</b>\n
-${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 90}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
+${(top).sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
                 `))
             }
         }
@@ -500,7 +500,7 @@ bot.action('TR', ctx=>{
 
 bot.on("message", async (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 0) {
+	if (message.chat.id < 90) {
 		let chatId = message.chat.id
 		let fromId = message.from.id
 		let chat = getChat(chatId)
