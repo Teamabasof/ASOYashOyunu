@@ -102,7 +102,7 @@ const dbChatAlHusnuEhedov = chatId => {  // CHAT ID ALMASI
 		members: {}
 	}
 	db.insert(chatId, data)
-        data  =  {30}
+   }
 const dbUserAlHusnuEhedov = firstName => {  // KULLANICI ADI, PUAN ALMASI
 	return {
 		firstName: firstName,
