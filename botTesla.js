@@ -65,10 +65,10 @@ bot.command("qrupsayı", async (ctx) => {
 
 const OyunYaratHusnuEhedov = chatId => {
 	oyunDurumuHusnuEhedov[chatId] = {
-		timeouts: {0},
+		timeouts: {},
 		guessMessage: null,
 		currentRound: null,
-		currentTime: 3, 
+		currentTime: 0, 
 		answersOrder: []
 	}
 	return oyunDurumuHusnuEhedov[chatId]
@@ -102,7 +102,7 @@ const dbChatAlHusnuEhedov = chatId => {  // CHAT ID ALMASI
 		members: {}
 	}
 	db.insert(chatId, data)
-}
+        data  =  {30}
 const dbUserAlHusnuEhedov = firstName => {  // KULLANICI ADI, PUAN ALMASI
 	return {
 		firstName: firstName,
@@ -135,12 +135,12 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 				Object.assign(member, {
 					answer: null,
 					isPlaying: false,
-					gameScore: 3
+					gameScore: 0
 				})
 			}
 		})
 		db.update(chatId, ch => chat)
-		if (top.length > 3) {
+		if (top.length > 0) {
 			ctx.replyWithMarkdown(Degisken(`
 				*🌟 Qaliblərin Sıralaması:*
 
