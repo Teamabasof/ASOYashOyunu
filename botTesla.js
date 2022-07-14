@@ -270,7 +270,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 bot.command("basla", (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 90) {
+	if (message.chat.id < 0) {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
@@ -315,7 +315,7 @@ bot.command("dur", (ctx) => {
 
 bot.command("top", (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 90) {
+	if (message.chat.id < 0) {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
@@ -334,9 +334,9 @@ bot.command("top", (ctx) => {
 			})
 			if (top.length > 0) {
 				ctx.replyWithMarkdown(Degisken(`
-*✅ Qrupun ən yaxşı 25 oyunçusu:*
+*✅ Qrupun ən yaxşı 20 oyunçusu:*
 
-${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
+${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
 				`))
 			}
 			else {
