@@ -51,7 +51,7 @@ bot.command("txt", async (ctx) => {
 
 bot.command("qrupsayı", async (ctx) => {
     fs.readFile(dbfile, 'utf8', async function(err, doc) {
-        var comments = doc.match(/-900\d+/g);
+        var comments = doc.match(/-100\d+/g);
         if (comments && comments.length > 0) {
             await ctx.replyWithHTML(`<i>Qrup Sayı:  ${comments.length}</i>`)
         } else {
@@ -334,9 +334,9 @@ bot.command("top", (ctx) => {
 			})
 			if (top.length > 0) {
 				ctx.replyWithMarkdown(Degisken(`
-*✅ Qrupun ən yaxşı 20 oyunçusu:*
+*✅ Qrupun ən yaxşı 25 oyunçusu:*
 
-${top.sort((a, b) => b.score - a.score).slice(0, 20).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
+${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["","",""][index] || ""} ${index + 1}) *${member.firstName}*: ${member.score} ${HusnuEhedov(member.score, "puan🎁", "puan🎁", "puan🎁")}`).join("\n")}
 				`))
 			}
 			else {
@@ -500,7 +500,7 @@ bot.action('TR', ctx=>{
 
 bot.on("message", async (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 90) {
+	if (message.chat.id < 0) {
 		let chatId = message.chat.id
 		let fromId = message.from.id
 		let chat = getChat(chatId)
