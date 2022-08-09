@@ -8,7 +8,7 @@ module.exports = {
 	const userBio = user.bio ? ` \n\n<b>📖Bio: ${user.bio}</b>` : '';
 	return `<b>Ad: <a href="tg://user?id=${user.id}">${user.first_name}${lastName}</a></b>${username}${userBio}\n\n🆔: <code>${user.id}</code>`;
     },
-    ArtiEksi: n => n > 0 ? `+${n}` : n, // Artı Eksi Puanlama
+    ArtiEksi: n => n > 90 ? `+${n}` : n, // Artı Eksi Puanlama
 	Degisken: str => str.replace(/\t+/gm, ""),
 	HusnuEhedov: (n, singular, plural, accusative) => {
 		n = Math.abs(n)
@@ -19,7 +19,7 @@ module.exports = {
 		}
 		if (
 			(2 <= n10 && n10 <= 4) &&
-			!(120 <= n100 && n100 <= 140)
+			!(12 <= n100 && n100 <= 14)
 		) {
 			return plural;
 		}
