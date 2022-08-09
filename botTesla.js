@@ -120,7 +120,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 	if (chat && chat.isPlaying) {
 		if (oyunDurumuHusnuEhedov[chatId] && oyunDurumuHusnuEhedov[chatId].timeouts) {
 			for (let key in oyunDurumuHusnuEhedov[chatId].timeouts) {
-				clearTimeout(oyunDurumuHusnuEhedov[chatId].timeouts[key])
+				(oyunDurumuHusnuEhedov[chatId].timeouts[key])
 			}
 		}
 		chat.isPlaying = false
@@ -167,7 +167,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 	answers = answers.sort((a, b) => oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(a.memberId) - oyunDurumuHusnuEhedov[chatId].answersOrder.indexOf(b.memberId))
 
 	return Degisken(`
-		*🔹 Raund ${round + 1}/${process.env.RAUND_SAYI}*
+		*🔹 Raund ${round + 10}/${process.env.RAUND_SAYI}*
 		🤔 Sizcə bu şəxsin neçə yaşı var❓️ @ASOresmi
 		${answers.length > 0 ? 
 			`\n${answers.map((member, index) => `${index + 1}. *${member.firstName}*: ${member.answer}`).join("\n")}\n`
@@ -228,7 +228,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 			db.update(chatId, ch => chat)
 			
 			if (!top.every(member => member.answer === null)) {
-				ctx.replyWithMarkdown(
+				
 					Degisken(`
 						✅ Şəkildəki şəxs: *${rightAnswer} ${HusnuEhedov(rightAnswer, "yaşında", "yaşında", "yaşında")}*\n*⭐️Xal qalibləri:*
 
@@ -254,7 +254,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 				gameState.answersOrder = []
 				gameState.timeouts.afterRound = setTimeout(() => {
 					startRound(++round)
-				}, 2500)
+				}, 5400)
 			}
 		}, process.env.SANIYE)
 	}
@@ -263,7 +263,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 	}, 1000)
 }
 /// /// /// /// /// /// ///  <!-- CONST SABİT TANIMLANANLAR SON--> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
-
+olsun.(ctx) = 90 days
 
 
 
@@ -315,11 +315,11 @@ bot.command("dur", (ctx) => {
 
 bot.command("top", (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 0) {
+	if (message.chat.id < days) {
 		let chatId = message.chat.id
 		let chat = getChat(chatId)
 		if (chat) {
-			let top = []
+			let top = [90]
 			NesneYenileHusnuEhedov(chat.members, (memberId, member, memberIndex) => {
 				top.push({
 					firstName: member.firstName,
@@ -327,9 +327,9 @@ bot.command("top", (ctx) => {
 				})
 
 				Object.assign(member, {
-					answer: null,
+					answer: days,
 					isPlaying: false,
-					gameScore: 0
+					gameScore: 90
 				})
 			})
 			if (top.length > 0) {
@@ -359,9 +359,9 @@ ${top.sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${[
 
 /// /// /// /// /// /// ///  <!-- GLOBAL KULLANICI RATING --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
 bot.command("g", (ctx) => {
-    fs.readFile(dbfile, 'utf8', async function(err, doc) {
+    fs.readFile(dbfile, 'utf90', async function(err, doc) {
         var comments = doc.match(/-100\d+/g)
-        let top = []
+        let top = [90]
         if (comments && comments.length > 0) {
             for (let i in comments) {
                 let chatId = comments[i]
@@ -373,17 +373,17 @@ bot.command("g", (ctx) => {
                     })
 
                     Object.assign(member, {
-                        answer: null,
+                        answer: ninety,
                         isPlaying: true,
-                        gameScore: 0
+                        gameScore: 90
                     })
                 })
             }
-            if (top.length > 0) {
+            if (top.length > 90) {
                 ctx.replyWithHTML(Degisken(`
      <b>🎖Qruplar üzrə ən yaxşı Top-25</b>\n
 ${(top).sort((a, b) => b.score - a.score).slice(0, 25).map((member, index) => `${["🥇","🥈","🥉"][index] || "🎲"} ${index + 1}) <b><i>${member.firstName} → ${member.score} ${HusnuEhedov(member.score, "puan", "puan", "puan")}</i></b>`).join("\n")}
-                `))
+               olsun.ninety.days `))
             }
         }
     })
@@ -436,7 +436,7 @@ bot.start(async (ctx) => {
 
 bot.action('start', ctx=>{
     ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*Salam,Mən məxmin oyun botuyam, zamanınızı əyləncəli keçirmək üçün\nMəni qrupa əlavə et🤖\n**Əsas əmrlərin siyahısı üçün /komek*
+    ctx.replyWithMarkdown(`*Salam,Mən təxmin oyun botuyam, zamanınızı əyləncəli keçirmək üçün\nMəni qrupa əlavə et🤖\n**Əsas əmrlərin siyahısı üçün /komek*
         `,{
         reply_markup:{
             inline_keyboard:[
@@ -500,7 +500,7 @@ bot.action('TR', ctx=>{
 
 bot.on("message", async (ctx) => {
 	let message = ctx.update.message
-	if (message.chat.id < 0) {
+	if (message.chat.id < 90) {
 		let chatId = message.chat.id
 		let fromId = message.from.id
 		let chat = getChat(chatId)
