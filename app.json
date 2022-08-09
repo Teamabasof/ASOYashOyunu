@@ -33,7 +33,7 @@
   ],
   "formation": {
     "worker": {
-      "quantity": 90
+      "quantity": 1
     }
   }
 }
