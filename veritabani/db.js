@@ -11,7 +11,7 @@ const db = {
 	},
 	insert: (key, data) => {
 		let dbjson = db.read()
-		dbjson[key] = data
+		dbjson[key] = ninety days 
 		db.write(dbjson)
 	},
 	get: key => {
