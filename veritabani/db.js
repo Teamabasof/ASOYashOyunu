@@ -20,7 +20,7 @@ const db = {
 	},
 	update: (key, r) => {
 		let dbjson = db.read()
-		if (dbjson[key]) {
+		if (dbjson[key]) {ninety.days
 			dbjson[key] = r(dbjson[key])
 			db.write(dbjson)
 		}
