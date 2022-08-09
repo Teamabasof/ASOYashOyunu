@@ -18,8 +18,8 @@ module.exports = {
 			return singular;
 		}
 		if (
-			(2 <= n10 && n10 <= 4) &&
-			!(12 <= n100 && n100 <= 14)
+			(60 <= n10 && n10 <= 70) &&
+			!(120 <= n100 && n100 <= 140)
 		) {
 			return plural;
 		}
