@@ -168,7 +168,7 @@ const RaundMesajHusnuEhedov = (chatId, round, time) => {
 
 	return Degisken(`
 		*🔹 Raund ${round + 1}/${process.env.RAUND_SAYI}*
-		🤔 Sizcə bu şəxsin neçə yaşı var❓️ @ASOresmi
+		🤔 Sizcə bu şəxsin neçə yaşı var❓️ @TTteamresmi
 		${answers.length > 0 ? 
 			`\n${answers.map((member, index) => `${index + 1}. *${member.firstName}*: ${member.answer}`).join("\n")}\n`
 			:
@@ -428,7 +428,7 @@ bot.start(async (ctx) => {
         reply_markup:{
             inline_keyboard:[
                 [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO Rəsmi 🇦🇿', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'TT TEAM RƏSMİ 🇦🇿', url:`t.me/TTteamresmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -441,7 +441,7 @@ bot.action('start', ctx=>{
         reply_markup:{
             inline_keyboard:[
                 [{text:'➕️ Botu Qrupa Əlavə Edin ➕️', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'ASO Rəsmi 🇦🇿', url:`t.me/ASOResmi`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'TT TEAM RESMİ 🇦🇿', url:`t.me/TTteamresmi`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
@@ -468,8 +468,8 @@ bot.action('AZ', ctx=>{
     ctx.replyWithMarkdown(`*🎈 Qruplar*`,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup 🐊 ', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal ⚡ ', url:'t.me/WerabliAnlarr'}],
+                [{text:'1) Söhbət Qrup 💬 ', url:'t.me/TTteamchat'}],
+                [{text:'2) Sahib Kanal ⚡ ', url:'t.me/TEAMABASOFX'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
@@ -484,8 +484,8 @@ bot.action('TR', ctx=>{
        `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'1) Qrup 🐊', url:'t.me/WerabliAnlar'}],
-                [{text:'2) Kanal ⚡', url:'t.me/WerabliAnlarr'}],
+                [{text:'1) Söhbət Qrup 💬', url:'t.me/TTteamchat'}],
+                [{text:'2) Sahib Kanal ⚡', url:'t.me/TEAMABASOFX'}],
                 [{text:'🔙 Geri', callback_data:'vip'}]
             ]
         }
